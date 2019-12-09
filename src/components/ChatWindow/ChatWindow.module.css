@@ -1,0 +1,39 @@
+.ChatWindow {
+  margin: 5px;
+  border: 2px solid #fff;
+  border-right: none;
+  border-radius: 5px;
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar-button {
+  background-repeat: no-repeat;
+  width: 5px;
+  height: 0px
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #ecedee
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 0px;
+  border-radius: 5px;
+  background-color: #000;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #14adbb;
+}
+
+::-webkit-resizer {
+  background-repeat: no-repeat;
+  width: 2px;
+  height: 0px
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}

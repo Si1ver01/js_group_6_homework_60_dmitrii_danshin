@@ -1,0 +1,32 @@
+.SendMessage{
+  margin: 5px;
+  /* border: 1px solid seagreen; */
+  border: 2px solid #fff;
+  border-radius: 5px;
+  padding: 10px 5px;
+  display: flex;
+}
+
+.SendMessage div:first-of-type{
+  flex-grow: 1;
+  margin-right: 3px;
+}
+
+.SendMessage div:last-of-type{
+  margin-right: 3px;
+}
+
+.SendMessage button{
+  background: transparent;
+  border:1px solid #fff;
+  color: #fff;
+}
+
+.SendMessage input{
+  background: transparent;
+  color:#fff;
+}
+
+.SendMessage input::placeholder{
+  color:#fff; 
+}

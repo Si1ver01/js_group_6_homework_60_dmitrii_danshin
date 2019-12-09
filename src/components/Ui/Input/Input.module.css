@@ -1,0 +1,15 @@
+.Input{
+}
+
+.Input input{
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  width: 100%;
+  box-sizing:border-box;
+}
+
+.Input input:focus{
+  border:1px solid gray;
+}

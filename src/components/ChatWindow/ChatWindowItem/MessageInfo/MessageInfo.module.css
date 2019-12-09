@@ -1,0 +1,13 @@
+.MessageInfo{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.MessageInfo span:last-of-type{
+  border-left: 1px solid #fff;
+}
+
+.MessageInfo span{
+  padding: 3px 5px;
+}
