@@ -10,6 +10,7 @@ class Chat extends Component {
   state = {
     messageList: [],
     lastDate: "",
+    showLoader : false ,
     sendMessage: {
       message: "",
       author: ""
@@ -31,19 +32,21 @@ class Chat extends Component {
   };
 
   async componentDidMount() {
+    this.setState({showLoader: true})
     const response = await axios.get("messages");
     const lastDate = response.data[response.data.length - 1].datetime;
     this.setState({
       messageList: [...response.data],
-      lastDate
+      lastDate,
+      showLoader : false
+
     });
     setInterval(async () => {
       const response = await axios.get(`messages?datetime=${this.state.lastDate}`);
       if (response.data.length) {
-        const lastDate = response.data[response.data.length - 1].datetime;
         this.setState({
           messageList: [...this.state.messageList, ...response.data],
-          lastDate
+          lastDate : response.data[response.data.length - 1].datetime,
         });
       }
     }, 3000);
@@ -52,7 +55,7 @@ class Chat extends Component {
   render() {
     return (
       <div className={classes.Chat}>
-        <ChatWindow list={this.state.messageList} />
+        <ChatWindow list={this.state.messageList} showPreloader={this.state.showLoader}/>
         <SendMessage
           {...this.state.sendMessage}
           inputHandler={this.inpuntHandler}
