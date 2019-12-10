@@ -13,9 +13,11 @@ class Chat extends Component {
     showLoader : false ,
     sendMessage: {
       message: "",
-      author: ""
+      author: "Bublik"
     }
   };
+
+  interval = null;
 
   inpuntHandler = (value, name) => {
     const sendMessage = { ...this.state.sendMessage };
@@ -34,14 +36,12 @@ class Chat extends Component {
   async componentDidMount() {
     this.setState({showLoader: true})
     const response = await axios.get("messages");
-    const lastDate = response.data[response.data.length - 1].datetime;
     this.setState({
       messageList: [...response.data],
-      lastDate,
+      lastDate : response.data[response.data.length - 1].datetime,
       showLoader : false
-
     });
-    setInterval(async () => {
+    this.interval = setInterval(async () => {
       const response = await axios.get(`messages?datetime=${this.state.lastDate}`);
       if (response.data.length) {
         this.setState({
@@ -50,6 +50,10 @@ class Chat extends Component {
         });
       }
     }, 3000);
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.interval)
   }
 
   render() {
